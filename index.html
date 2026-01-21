@@ -76,8 +76,8 @@
     
     #hero {
       position: absolute;
-      width: 90px;
-      height: 110px;
+      width: 110px;
+      height: 130px;
       background: url("images/hero.png") center/contain no-repeat;
       transform-origin: center center;
       transition: transform 0.15s ease-out;
@@ -103,27 +103,27 @@
       z-index: 10;
     }
 
-    .item { width: 70px; height: 70px; }
+    .item { width: 90px; height: 90px; }
     .item-type-1 {
-      background: url("images/nut.png") center/contain no-repeat;
+      background: url("images/item1.png") center/contain no-repeat;
     }
     .item-type-2 {
-      background: url("images/pea.png") center/contain no-repeat;
+      background: url("images/item2.png") center/contain no-repeat;
     }
     .item-type-3 {
-      background: url("images/sunflower.png") center/contain no-repeat;
+      background: url("images/item3.png") center/contain no-repeat;
     }
 
     .candy {
-      width: 60px;
-      height: 60px;
-      background: url("images/brains.png") center/contain no-repeat;
+      width: 90px;
+      height: 90px;
+      background: url("images/candy.png") center/contain no-repeat;
     }
 
     .bomb {
-      width: 60px;
-      height: 60px;
-      background: url("images/garlic.png") center/contain no-repeat;
+      width: 90px;
+      height: 90px;
+      background: url("images/bomb.png") center/contain no-repeat;
     }
 
     .nearby {
@@ -383,15 +383,15 @@
   <div id="game">
     <div class="hud">
       <div class="hud-item">
-        <span class="hud-label">Баллы:</span>
+        <span class="hud-label">Score:</span>
         <span id="score" class="hud-value">0</span>
       </div>
       <div class="hud-item">
-        <span class="hud-label">Ошибки:</span>
+        <span class="hud-label">Mistakes:</span>
         <span id="mistakes" class="hud-value">0 / 3</span>
       </div>
       <div class="hud-item">
-        <span class="hud-label">Выполнено:</span>
+        <span class="hud-label">Found:</span>
         <span id="found" class="hud-value">0 / 10</span>
       </div>
     </div>
@@ -400,7 +400,7 @@
 
     <div id="taskModal" class="modal-backdrop">
       <div class="modal-window">
-        <div class="modal-header">Задание</div>
+        <div class="modal-header">Task</div>
         <div id="modalQuestion" class="modal-question"></div>
         <div id="modalOptions" class="modal-options"></div>
       </div>
@@ -409,14 +409,14 @@
     <div id="gameOverOverlay" class="overlay">
       <div class="overlay-content">
         <div class="overlay-title" id="overlayTitle">GAME OVER</div>
-        <div class="overlay-sub" id="overlaySub">Попробуешь ещё раз?</div>
-        <button id="btnRestart" class="btn-primary">Play again?</button>
+        <div class="overlay-sub" id="overlaySub">Try again?</div>
+        <button id="btnRestart" class="btn-primary">RESTART</button>
       </div>
     </div>
 
     <div class="hint-controls">
       <span class="hint-key">↑ ↓ ← →</span>
-      <span>Двигай героя</span>
+      <span>Move</span>
     </div>
   </div>
 
@@ -489,83 +489,83 @@
 
     const TASKS = [
       {
-        question: "Выбери верное предложение:",
+        question: "Which is correct?",
         options: [
-          { text: "Grinch steals Christmas.", correct: true },
-          { text: "Grinch loves Christmas lights.", correct: false },
-          { text: "Grinch is a fluffy bunny.", correct: false }
+          { text: "Tom has got a brother, his name is Jack.", correct: true },
+          { text: "Tom is a brother, his name has got Jack.", correct: false },
+          { text: "Tom have got a brother, his name is Jack.", correct: false }
         ]
       },
       {
-        question: "Как правильно?",
+        question: "My dog … a long tail.",
         options: [
-          { text: "Santa brings presents.", correct: true },
-          { text: "Santa bring presents.", correct: false },
-          { text: "Santa brung presents.", correct: false }
+          { text: "has got", correct: true },
+          { text: "is", correct: false },
+          { text: "have got", correct: false }
         ]
       },
       {
-        question: "Выбери верный перевод: snow",
+        question: "Anna … a cat, it … black.",
         options: [
-          { text: "снег", correct: true },
-          { text: "мороз", correct: false },
-          { text: "дождь", correct: false }
+          { text: "has got, is", correct: true },
+          { text: "am, has got", correct: false },
+          { text: "have got, is", correct: false }
         ]
       },
       {
-        question: "Где грамматически верное предложение?",
+        question: "The boys … happy.",
         options: [
-          { text: "The bells are ringing.", correct: true },
-          { text: "The bells is ringing.", correct: false },
-          { text: "The bells be ringing.", correct: false }
+          { text: "are", correct: true },
+          { text: "is", correct: false },
+          { text: "have", correct: false }
         ]
       },
       {
-        question: "Продолжи правильно: I am ...",
+        question: "My book … on the desk.",
         options: [
-          { text: "happy", correct: true },
-          { text: "happies", correct: false },
-          { text: "happiered", correct: false }
+          { text: "is", correct: true },
+          { text: "has got", correct: false },
+          { text: "have got", correct: false }
         ]
       },
       {
-        question: "Выбери верное предложение:",
+        question: "Which is correct?",
         options: [
-          { text: "Children are opening gifts.", correct: true },
-          { text: "Children is opening gifts.", correct: false },
-          { text: "Children be opening gifts.", correct: false }
+          { text: "Frogs have got big eyes.", correct: true },
+          { text: "Frogs have got big ears.", correct: false },
+          { text: "Frogs are big eyes.", correct: false }
         ]
       },
       {
-        question: "Верный перевод: lights",
+        question: "Your dog … hungry.",
         options: [
-          { text: "огни", correct: true },
-          { text: "звонки", correct: false },
-          { text: "олени", correct: false }
+          { text: "is", correct: true },
+          { text: "have got", correct: false },
+          { text: "has got", correct: false }
         ]
       },
       {
-        question: "Выбери верное предложение:",
+        question: "You … a kite, it … green.",
         options: [
-          { text: "I like Christmas songs.", correct: true },
-          { text: "I liking Christmas songs.", correct: false },
-          { text: "I likes Christmas songs.", correct: false }
+          { text: "have got, is", correct: true },
+          { text: "are, is", correct: false },
+          { text: "has got, are", correct: false }
         ]
       },
       {
-        question: "Выбери верное слово:",
+        question: "Ann and Sam … in the garden.",
         options: [
-          { text: "present", correct: true },
-          { text: "presant", correct: false },
-          { text: "prezent", correct: false }
+          { text: "are", correct: true },
+          { text: "have got", correct: false },
+          { text: "has got", correct: false }
         ]
       },
       {
-        question: "Правильное предложение:",
+        question: "My mum … a teacher. She … long hair and blue eyes.",
         options: [
-          { text: "There is snow on the ground.", correct: true },
-          { text: "There are snow on the ground.", correct: false },
-          { text: "There be snow on the ground.", correct: false }
+          { text: "is, has got", correct: true },
+          { text: "has got, is", correct: false },
+          { text: "is, have got", correct: false }
         ]
       }
     ];
@@ -1079,7 +1079,7 @@
 
     function triggerGameOver() {
       isGameOver = true;
-      overlayTitle.textContent = "Игра окончена";
+      overlayTitle.textContent = "GAME OVER";
       overlaySub.textContent = "Try again?";
       showOverlay(false);
     }
@@ -1087,8 +1087,8 @@
     function checkWinCondition() {
       if (foundCount >= NUM_MAIN_ITEMS) {
         isWin = true;
-        overlayTitle.textContent = "Молодец!";
-        overlaySub.textContent = "Ты нашёл(а) все верные слова!";
+        overlayTitle.textContent = "Well done!";
+        overlaySub.textContent = "Thanks for helping me!";
         showOverlay(true);
       }
     }
@@ -1155,3 +1155,4 @@
   </script>
 </body>
 </html>
+
